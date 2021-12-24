@@ -7,12 +7,14 @@ import { Routes, Route, BrowserRouter } from "react-router-dom";
 import HomePage from "./components/HomePage/HomePage";
 import Form from "./components/Form/Form";
 import Login from "./components/Login/Login";
+import Gallery from "./components/Gallery/Gallery";
 
 ReactDOM.render(
   <React.StrictMode>
     <BrowserRouter>
       <Routes>
-        <Route path="/login" element={<Login />}></Route>
+        <Route path="/login" element={<Login />} />
+        <Route path="gallery" element={<Gallery />} />
         <Route path="/" element={<App />}>
           <Route path="/forms" element={<Form />}>
             <Route path=":formType" element={<h1>Testing</h1>}></Route>

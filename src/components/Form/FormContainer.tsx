@@ -1,6 +1,6 @@
 import React from "react";
 import { Link } from "react-router-dom";
-import Button from "../Button/Button";
+import Button from "../../utilsComponents/Button/Button";
 import FormCallToAction from "./FormCallToAction/FormCallToAction";
 
 function FormContainer(props: any) {

@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import Button from "../Button/Button";
+import Button from "../../utilsComponents/Button/Button";
 import ProgressBar from "../ProgressBar/ProgressBar";
 import QuestionCard from "./QuestionCard";
 import { QandA } from "./questions";

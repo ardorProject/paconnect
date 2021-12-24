@@ -23,14 +23,14 @@ function Menu(props: MenuProps) {
       )}
       {props.type === "radio" && (
         <form>
-          {props.data?.map((data: MenuData) => (
+          {/* {props.data?.map((data: MenuData) => (
             <RadioInput
               label={data.label}
               value={data.value}
               key={data.value}
               checked={data.value === props.value}
             />
-          ))}
+          ))} */}
         </form>
       )}
     </div>

@@ -51,6 +51,7 @@ export type User = {
 
 // Match data type
 type MatchUserInfo = {
+  id: string;
   firstName: string;
   phone: string;
   email: string;
@@ -91,6 +92,7 @@ type Questions = {
     isDeleted: boolean;
     type: "text" | "radio" | "checkbox";
     label: string;
+    description?: string;
     required: boolean;
     deletable: boolean;
     potentialAnswers: string[];
