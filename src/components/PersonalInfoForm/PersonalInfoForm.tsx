@@ -1,8 +1,13 @@
 import React from "react";
+import Button from "../Button/Button";
 import Input from "../Input/Input";
 import Menu from "../Menu/Menu";
 
-function PersonalInfoForm() {
+type PersonalInfoFormProps = {
+  onClick: Function;
+};
+
+function PersonalInfoForm(props: PersonalInfoFormProps) {
   return (
     <div className="PersonalInfoForm grow p-3">
       <h1>Personal Information</h1>
@@ -33,6 +38,11 @@ function PersonalInfoForm() {
         ]}
       />
       <Input label="Bio" type="textarea" placeholder="Describe yourself..." />
+      <Button
+        label="Next"
+        className="mt-4 ml-auto"
+        onClick={() => props?.onClick?.()}
+      />
     </div>
   );
 }

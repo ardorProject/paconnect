@@ -3,10 +3,26 @@ import ReactDOM from "react-dom";
 import "./index.css";
 import App from "./App";
 import reportWebVitals from "./reportWebVitals";
+import { Routes, Route, BrowserRouter } from "react-router-dom";
+import HomePage from "./components/HomePage/HomePage";
+import Form from "./components/Form/Form";
+import Login from "./components/Login/Login";
 
 ReactDOM.render(
   <React.StrictMode>
-    <App />
+    <BrowserRouter>
+      <Routes>
+        <Route path="/login" element={<Login />}></Route>
+        <Route path="/" element={<App />}>
+          <Route path="/forms" element={<Form />}>
+            <Route path=":formType" element={<h1>Testing</h1>}></Route>
+          </Route>
+          <Route index element={<HomePage />} />
+        </Route>
+        <Route path="/admin" element={<h1>Admin</h1>}></Route>
+        <Route path="*" element={<h1>Error page</h1>} />
+      </Routes>
+    </BrowserRouter>
   </React.StrictMode>,
   document.getElementById("root")
 );

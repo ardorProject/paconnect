@@ -6,6 +6,7 @@ import { QandA } from "./questions";
 
 type PreferenceFormProps = {
   formType: "single-form" | "group-form";
+  onSubmit: Function;
 };
 
 function PreferenceForm(props: PreferenceFormProps) {
@@ -47,7 +48,11 @@ function PreferenceForm(props: PreferenceFormProps) {
           />
         )}
         {currentQuestionIdx === questionsAndAnswers.length - 1 && (
-          <Button label="Submit" className="w-4/12" disabled />
+          <Button
+            label="Submit"
+            className="w-4/12"
+            onClick={() => props.onSubmit()}
+          />
         )}
       </div>
     </div>

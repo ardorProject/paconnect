@@ -10,11 +10,8 @@ function CallToAction() {
         <p className="text-3xl mt-5">Start the match</p>
       </div>
       <div className="CallToAction__Buttons w-full flex items-center justify-center">
-        <Link to="/forms/single-form">
-          <Button label="One-on-One" className="mr-5" />
-        </Link>
-        <Link to="/forms/group-form">
-          <Button label="Group" />
+        <Link to="/forms">
+          <Button label="Start here" className="mr-5" />
         </Link>
       </div>
     </div>
