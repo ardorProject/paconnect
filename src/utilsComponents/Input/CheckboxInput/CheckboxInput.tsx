@@ -7,7 +7,7 @@ type DataNode = {
 type CheckboxInputProps = {
   label?: string;
   description?: string;
-  data: DataNode[];
+  data?: DataNode[];
   selected: {
     [key: string]: DataNode;
   };
@@ -80,7 +80,10 @@ function CheckboxInput(props: CheckboxInputProps) {
       )}
       <div className="CheckboxInput__Container">
         {props.data?.map((dataNode: DataNode) => (
-          <div className="CheckboxInput__Item mb-2 flex items-center">
+          <div
+            className="CheckboxInput__Item mb-2 flex items-center"
+            key={dataNode.value}
+          >
             <CheckBox
               dataNode={dataNode}
               checkedValues={checkedValues}

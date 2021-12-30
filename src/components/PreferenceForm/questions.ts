@@ -1,216 +1,162 @@
-type QuestionObject = {
-  id: string;
-  question: string;
-  answer: string;
-  potentialAnswers?: string[];
-  description?: string;
-  required: boolean;
-  type: "radio" | "checkbox" | "text";
-};
-
-type QandAType = {
-  [key: string]: QuestionObject[];
-};
+import { QandAType } from "../../types/Questions_Answers_types";
 
 export const QandA: QandAType = {
   single: [
     {
-      id: "desireGender",
-      question: "I am looking to meet with a...",
-      answer: "",
-      required: true,
-      type: "checkbox",
-      potentialAnswers: ["Male", "Female", "Any"],
-    },
-    {
       id: "availability",
-      question: "At what times could you meet on your selected day?",
+      label: "At what times could you meet on your selected day?",
       description:
         "(You will talk to your match to pick a specific time within the intervals listed)",
       potentialAnswers: [
-        "Friday morning (9 - 12 pm)",
-        "Friday afternoon (12 - 5 pm)",
-        "Friday evening (5 - 10 pm)",
+        {
+          label: "Friday morning (9 - 12 pm)",
+          value: "friday_morning_9_12_pm",
+        },
+        {
+          label: "Friday afternoon (12 - 5 pm)",
+          value: "friday_afternoon_12-5_pm",
+        },
+        {
+          label: "Friday evening (5 - 10 pm)",
+          value: "friday_evening_5_10_pm",
+        },
       ],
-      answer: "",
       required: true,
       type: "checkbox",
+      formType: "single",
+      isDeleted: false,
+      deletable: false,
     },
-    {
-      id: "race",
-      question: "Race",
-      description:
-        "Responses to this question have no bearing on matching outcomes. This question is optional",
-      potentialAnswers: ["Asian", "American Indian or Alaska Native"],
-      answer: "",
-      required: false,
-      type: "checkbox",
-    },
+
     {
       id: "purpose",
-      question: "What are you looking for?",
+      label: "What are you looking for?",
       potentialAnswers: [
-        "Friendship",
-        "Short-Term Relationship",
-        "Long-Term Relationship",
+        { label: "Friendship", value: "friendship" },
+        { label: "Short-Term Relationship", value: "short_term_relationship" },
+        { label: "Long-Term Relationship", value: "long_term_relationship" },
       ],
-      answer: "",
       required: true,
       type: "radio",
+      formType: "single",
+      isDeleted: false,
+      deletable: false,
     },
     {
       id: "location",
-      question: "Where would you like to hang out?",
+      label: "Where would you like to hang out?",
       potentialAnswers: [
-        "Saxby's / StarBucks for a Coffee",
-        "Drexel Park",
-        "Sabrina's Cafe",
-        "Art Museum",
-        "Rocky Steps",
-        "City Hall",
-        "Drexel Library",
-        "Bubble Tea",
-        "Ice Cream",
-        "Halal Truck",
-        "Lancaster Walk",
-        "Cira Green",
+        {
+          label: "Saxby's / StarBucks for a Coffee",
+          value: "saxbys_starbucks_for_a_coffee",
+        },
+        { label: "Drexel Park", value: "drexel_park" },
+        { label: "Sabrina's Cafe", value: "sabrina_cafe" },
+        { label: "Art Museum", value: "art_museum" },
+        { label: "Rocky Steps", value: "rocky_steps" },
+        { label: "City Hall", value: "city_hall" },
+        { label: "Drexel Library", value: "drexel_library" },
+        { label: "Bubble Tea", value: "bubble_tea" },
+        { label: "Ice Cream", value: "ice_cream" },
+        { label: "Halal Truck", value: "halal_truck" },
+        { label: "Lancaster Walk", value: "lancaster_walk" },
+        { label: "Cira Green", value: "cira_green" },
       ],
-      answer: "",
+      formType: "single",
+      isDeleted: false,
+      deletable: false,
       required: true,
       type: "checkbox",
-    },
-
-    // Not Matched
-    {
-      id: "classYear",
-      question: "Class Year",
-      answer: "",
-      required: true,
-      type: "radio",
-    },
-    {
-      id: "major",
-      question: "Major",
-      answer: "",
-      required: true,
-      type: "radio",
     },
   ],
   group: [
     {
-      question: "Email",
-      id: "email",
-      answer: "truong@gmail.com",
-      required: true,
-      type: "text",
-    },
-    {
-      id: "firstName",
-      question: "First Name",
-      answer: "",
-      required: true,
-      type: "text",
-    },
-    {
-      id: "lastName",
-      question: "Last Name",
-      answer: "",
-      required: true,
-      type: "text",
-    },
-    {
-      id: "gender",
-      question: "Gender",
-      answer: "",
-      required: true,
-      type: "radio",
-    },
-    {
-      id: "university",
-      question: "University",
-      answer: "",
-      required: true,
-      type: "radio",
-    },
-    {
       id: "desireGender",
-      question: "Desire Gender",
-      answer: "",
+      label: "Desire Gender",
+      potentialAnswers: [
+        {
+          label: "Male",
+          value: "male",
+        },
+        {
+          label: "Female",
+          value: "female",
+        },
+        {
+          label: "Both",
+          value: "both",
+        },
+      ],
+      formType: "group",
+      isDeleted: false,
+      deletable: false,
       required: true,
       type: "checkbox",
     },
     {
       id: "availability",
-      question: "At what times could you meet on your selected day?",
+      label: "At what times could you meet on your selected day?",
       description:
         "(You will talk to your match to pick a specific time within the intervals listed)",
       potentialAnswers: [
-        "Friday morning (9 - 12 pm)",
-        "Friday afternoon (12 - 5 pm)",
-        "Friday evening (5 - 10 pm)",
+        {
+          label: "Friday morning (9 - 12 pm)",
+          value: "friday_morning_9_12_pm",
+        },
+        {
+          label: "Friday afternoon (12 - 5 pm)",
+          value: "friday_afternoon_12-5_pm",
+        },
+        {
+          label: "Friday evening (5 - 10 pm)",
+          value: "friday_evening_5_10_pm",
+        },
       ],
-      answer: "",
+      formType: "group",
+      isDeleted: false,
+      deletable: false,
       required: true,
       type: "checkbox",
     },
     {
-      id: "race",
-      question: "Race",
-      description:
-        "Responses to this question have no bearing on matching outcomes. This question is optional",
-      potentialAnswers: ["Asian", "American Indian or Alaska Native"],
-      answer: "",
-      required: false,
-      type: "checkbox",
-    },
-    {
       id: "purpose",
-      question: "What are you looking for?",
+      label: "What are you looking for?",
       potentialAnswers: [
-        "Friendship",
-        "Short-Term Relationship",
-        "Long-Term Relationship",
+        { label: "Friendship", value: "friendship" },
+        { label: "Short-Term Relationship", value: "short_term_relationship" },
+        { label: "Long-Term Relationship", value: "long_term_relationship" },
       ],
-      answer: "",
+      formType: "group",
+      isDeleted: false,
+      deletable: false,
       required: true,
       type: "radio",
     },
     {
       id: "location",
-      question: "Where would you like to hang out?",
+      label: "Where would you like to hang out?",
       potentialAnswers: [
-        "Saxby's / StarBucks for a Coffee",
-        "Drexel Park",
-        "Sabrina's Cafe",
-        "Art Museum",
-        "Rocky Steps",
-        "City Hall",
-        "Drexel Library",
-        "Bubble Tea",
-        "Ice Cream",
-        "Halal Truck",
-        "Lancaster Walk",
-        "Cira Green",
+        {
+          label: "Saxby's / StarBucks for a Coffee",
+          value: "saxbys_starbucks_for_a_coffee",
+        },
+        { label: "Drexel Park", value: "drexel_park" },
+        { label: "Sabrina's Cafe", value: "sabrina_cafe" },
+        { label: "Art Museum", value: "art_museum" },
+        { label: "Rocky Steps", value: "rocky_steps" },
+        { label: "City Hall", value: "city_hall" },
+        { label: "Drexel Library", value: "drexel_library" },
+        { label: "Bubble Tea", value: "bubble_tea" },
+        { label: "Ice Cream", value: "ice_cream" },
+        { label: "Halal Truck", value: "halal_truck" },
+        { label: "Lancaster Walk", value: "lancaster_walk" },
+        { label: "Cira Green", value: "cira_green" },
       ],
-      answer: "",
+      formType: "group",
+      isDeleted: false,
+      deletable: false,
       required: true,
       type: "checkbox",
-    },
-
-    // Not Matched
-    {
-      id: "classYear",
-      question: "Class Year",
-      answer: "",
-      required: true,
-      type: "radio",
-    },
-    {
-      id: "major",
-      question: "Major",
-      answer: "",
-      required: true,
-      type: "radio",
     },
   ],
 };

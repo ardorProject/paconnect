@@ -4,7 +4,7 @@ interface RadioInputProps {
   label?: string;
   onSelect?: Function;
   value?: string;
-  data: { label: string; value: string }[];
+  data: { label: string; value: string }[] | undefined;
 }
 
 type RadioButtonProps = {
@@ -49,9 +49,9 @@ function RadioInput(props: RadioInputProps) {
       )}
 
       <div className="RadioInput__Container">
-        {props.data.map((dataPiece: { label: string; value: string }) => (
+        {props.data?.map((dataPiece: { label: string; value: string }) => (
           <div
-            className="RadioInput__Item w-full flex items-center"
+            className="RadioInput__Item w-full flex items-center mb-2"
             key={dataPiece.value}
           >
             <RadioButton

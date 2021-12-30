@@ -16,6 +16,8 @@ function PreferenceForm(props: PreferenceFormProps) {
   const [currentQuestion, setCurrentQuestion] = useState(
     questionsAndAnswers[currentQuestionIdx]
   );
+  const [result, setResult]: [{ [key: string]: any }, Function] = useState({});
+  console.log("Preference answers >>>", result);
 
   useEffect(() => {
     setCurrentQuestion(questionsAndAnswers[currentQuestionIdx]);
@@ -30,6 +32,8 @@ function PreferenceForm(props: PreferenceFormProps) {
       <QuestionCard
         {...currentQuestion}
         questionNumber={currentQuestionIdx + 1}
+        result={result}
+        setResult={setResult}
       />
       <div className="PreferenceForm__Actions w-full h-max flex justify-between">
         {currentQuestionIdx > 0 &&

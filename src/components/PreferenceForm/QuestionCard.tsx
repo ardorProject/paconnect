@@ -1,36 +1,77 @@
 import React from "react";
-import Menu from "../../utilsComponents/Menu/Menu";
+import { Question } from "../../types/Questions_Answers_types";
+import CheckboxInput from "../../utilsComponents/Input/CheckboxInput/CheckboxInput";
+import {
+  RadioInput,
+  TextAreaInput,
+  TextInput,
+} from "../../utilsComponents/Input/Input";
 
-type QuestionCardProps = {
-  id: string;
-  question: string;
-  answer: string;
-  potentialAnswers?: string[];
-  description?: string;
-  required: boolean;
-  type: "radio" | "checkbox" | "text";
+interface QuestionCardProps extends Question {
   questionNumber: number;
-};
+  result: { [key: string]: any };
+  setResult: Function;
+}
 
 function QuestionCard(props: QuestionCardProps) {
-  console.log(props);
   return (
     <div
       className="QuestionCard relative w-full grow shadow-2xl bg-white my-5 flex flex-col p-5 box-border rounded-lg"
       id={props.id}
     >
-      <h1 className="text-lg font-bold">
-        {`Question ${props.questionNumber}: ${props.question} `}
+      <h1 className="text-lg font-bold mb-3">
+        {`Question ${props.questionNumber}: ${props.label} `}
         {props.required && <strong className="text-red-500 text-2xl">*</strong>}
       </h1>
-      <Menu
-        type="radio"
-        data={props.potentialAnswers?.map((answer: string) => ({
-          value: answer,
-          label: answer,
-        }))}
-        value={props.potentialAnswers?.[0]}
-      />
+      {props.type == "text" && (
+        <TextInput
+          onChange={(event: any) => {
+            const newObject: any = { ...props.result };
+            newObject[props.id] = event.target.value;
+            props.setResult({ ...props.result });
+          }}
+          value={props.result[props.id] || ""}
+        />
+      )}
+      {props.type == "radio" && (
+        <RadioInput
+          data={props.potentialAnswers}
+          onSelect={(selectedValue: any) => {
+            const newObject: any = { ...props.result };
+            newObject[props.id] = selectedValue;
+            props.setResult(newObject);
+          }}
+        />
+      )}
+      {props.type == "checkbox" && (
+        <CheckboxInput
+          data={props.potentialAnswers}
+          selected={props.selected || {}}
+          onSelect={(
+            selectedValues:
+              | {
+                  [key: string]: {
+                    label: string;
+                    value: string;
+                  };
+                }
+              | undefined
+          ) => {
+            const newObject: any = { ...props.result };
+            newObject[props.id] = selectedValues;
+            props.setResult(newObject);
+          }}
+        />
+      )}
+      {props.type == "textarea" && (
+        <TextAreaInput
+          onChange={(event: any) => {
+            const newObject: any = { ...props.result };
+            newObject[props.id] = event.target.value;
+            props.setResult(newObject);
+          }}
+        />
+      )}
     </div>
   );
 }

@@ -8,6 +8,7 @@ import HomePage from "./components/HomePage/HomePage";
 import Form from "./components/Form/Form";
 import Login from "./components/Login/Login";
 import Gallery from "./components/Gallery/Gallery";
+import CheckList from "./components/CheckList/CheckList";
 
 ReactDOM.render(
   <React.StrictMode>
@@ -15,6 +16,7 @@ ReactDOM.render(
       <Routes>
         <Route path="/login" element={<Login />} />
         <Route path="gallery" element={<Gallery />} />
+        <Route path="/checklist" element={<CheckList />} />
         <Route path="/" element={<App />}>
           <Route path="/forms" element={<Form />}>
             <Route path=":formType" element={<h1>Testing</h1>}></Route>

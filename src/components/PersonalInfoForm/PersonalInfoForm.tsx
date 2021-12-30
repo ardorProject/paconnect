@@ -1,8 +1,13 @@
-import React, { useEffect, useState } from "react";
+import React, { useState } from "react";
+import { Question } from "../../types/Questions_Answers_types";
 import Button from "../../utilsComponents/Button/Button";
 import CheckboxInput from "../../utilsComponents/Input/CheckboxInput/CheckboxInput";
-import { RadioInput, TextInput } from "../../utilsComponents/Input/Input";
-import { personalQuestions, Question } from "./personalQuestions";
+import {
+  RadioInput,
+  TextAreaInput,
+  TextInput,
+} from "../../utilsComponents/Input/Input";
+import { personalQuestions } from "./personalQuestions";
 
 type PersonalInfoFormProps = {
   onClick: Function;
@@ -10,6 +15,7 @@ type PersonalInfoFormProps = {
 
 function PersonalInfoForm(props: PersonalInfoFormProps) {
   const [result, setResult]: [{ [key: string]: any }, Function] = useState({});
+  console.log("Result >>>", result);
 
   return (
     <div className="PersonalInfoForm grow p-3">
@@ -24,7 +30,7 @@ function PersonalInfoForm(props: PersonalInfoFormProps) {
               onChange={(event: any) => {
                 const newObject: any = { ...result };
                 newObject[question.id] = event.target.value;
-                setResult({ ...result });
+                setResult(newObject);
               }}
               value={result[question.id] || ""}
             />
@@ -33,21 +39,45 @@ function PersonalInfoForm(props: PersonalInfoFormProps) {
           return (
             <CheckboxInput
               label={question.label}
-              data={question.potentialAnswers.map((answer: string) => ({
-                label: answer,
-                value: answer.toLowerCase(),
-              }))}
+              data={question.potentialAnswers}
               selected={{}}
+              onSelect={(
+                selectedValues:
+                  | {
+                      [key: string]: {
+                        label: string;
+                        value: string;
+                      };
+                    }
+                  | undefined
+              ) => {
+                const newObject: any = { ...result };
+                newObject[question.id] = selectedValues;
+                setResult(newObject);
+              }}
             />
           );
         } else if (question.type === "radio") {
           return (
             <RadioInput
               label={question.label}
-              data={question.potentialAnswers.map((answer: string) => ({
-                label: answer,
-                value: answer.toLowerCase(),
-              }))}
+              data={question.potentialAnswers}
+              onSelect={(selectedValue: any) => {
+                const newObject: any = { ...result };
+                newObject[question.id] = selectedValue;
+                setResult(newObject);
+              }}
+            />
+          );
+        } else if (question.type == "textarea") {
+          return (
+            <TextAreaInput
+              label={question.label}
+              onChange={(event: any) => {
+                const newObject: any = { ...result };
+                newObject[question.id] = event.target.value;
+                setResult(newObject);
+              }}
             />
           );
         }

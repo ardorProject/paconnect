@@ -44,3 +44,11 @@ Endpoints:
   ```
 
 - `DELETE` v1/api/questions/`:id`: delete a question by id
+
+# Users
+
+- Signup
+  - make sure no users sign up twice
+- Signin
+- Get the token for later requests
+- Password reset

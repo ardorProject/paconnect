@@ -1,15 +1,4 @@
-export type Question = {
-  id: string; // PRIMARY KEY
-  formType: "personal" | "single" | "group";
-  isDeleted: boolean;
-  type: "text" | "radio" | "checkbox";
-  label: string;
-  description?: string;
-  required: boolean;
-  deletable: boolean;
-  potentialAnswers: string[];
-};
-export type Questions = Question[];
+import { Questions } from "../../types/Questions_Answers_types";
 
 export const personalQuestions: Questions = [
   {
@@ -51,12 +40,12 @@ export const personalQuestions: Questions = [
     required: true,
     deletable: true,
     potentialAnswers: [
-      "Freshman",
-      "Sophomore",
-      "Pre-junior",
-      "Junior",
-      "Senior",
-      "Graduate Student",
+      { label: "Freshman", value: "freshman" },
+      { label: "Sophomore", value: "sophomore" },
+      { label: "Pre-junior", value: "pre_junior" },
+      { label: "Junior", value: "junior" },
+      { label: "Senior", value: "senior" },
+      { label: "Graduate Student", value: "graduate" },
     ],
   },
   {
@@ -67,7 +56,12 @@ export const personalQuestions: Questions = [
     label: "Gender",
     required: true,
     deletable: false,
-    potentialAnswers: ["Male", "Femail", "Other", "Prefer not to disclose"],
+    potentialAnswers: [
+      { label: "Male", value: "male" },
+      { label: "Femail", value: "female" },
+      { label: "Other", value: "other" },
+      { label: "Prefer not to disclose", value: "not_disclose" },
+    ],
   },
   {
     id: "q_university", // PRIMARY KEY
@@ -78,9 +72,9 @@ export const personalQuestions: Questions = [
     required: true,
     deletable: false,
     potentialAnswers: [
-      "Drexel University",
-      "Temple University",
-      "University of Pennsylvania",
+      { label: "Drexel University", value: "drexel" },
+      { label: "Temple University", value: "temple" },
+      { label: "University of Pennsylvania", value: "upenn" },
     ],
   },
   {
@@ -104,13 +98,25 @@ export const personalQuestions: Questions = [
     required: false,
     deletable: true,
     potentialAnswers: [
-      "American Indian or Alaska Native",
-      "Asian",
-      "Black or African American",
-      "Hispanic / Latino",
-      "Native Hawaiian or Other Pacific Islander",
-      "White",
-      "Other",
+      {
+        label: "American Indian or Alaska Native",
+        value: "american_indian_or_alaska_native",
+      },
+      { label: "Asian", value: "asian" },
+      {
+        label: "Black or African American",
+        value: "black_or_african_american",
+      },
+      { label: "Hispanic / Latino", value: "hispanic_latino" },
+      {
+        label: "Native Hawaiian or Other Pacific Islander",
+        value: "native_hawaiian_or_other_pacific_islander",
+      },
+      {
+        label: "White",
+        value: "white",
+      },
+      { label: "Other", value: "other" },
     ],
   },
   {
@@ -123,22 +129,17 @@ export const personalQuestions: Questions = [
     required: true,
     deletable: false,
     potentialAnswers: [
-      "Anime",
-      "Making Pasta",
-      "Reading Books",
-      "Sports",
-      "Partying",
-      "Arts",
-      "Music",
-      "Going to the Beach",
-      "Science / Engineering / Math",
-      "Gaming",
-      "Photography",
-      "Dancing",
-      "Programming / Hackathons",
-      "Business / Eutrepreneurship",
-      "Finance / Investment",
-      "Philosophy",
+      { label: "Anime", value: "anime" },
+      {
+        label: "Making Pasta",
+        value: "making_pasta",
+      },
+      { label: "Reading Books", value: "reading_books" },
+
+      { label: "Sports", value: "sports" },
+      { label: "Partying", value: "partying" },
+      { label: "Arts", value: "arts" },
+      { label: "Music", value: "music" },
     ],
   },
   {
@@ -156,7 +157,7 @@ export const personalQuestions: Questions = [
     id: "q_bio", // PRIMARY KEY
     formType: "personal",
     isDeleted: false,
-    type: "text",
+    type: "textarea",
     label:
       "Please provide a short bio of yourself. It will be sent to your matches in an email",
     description: "",
